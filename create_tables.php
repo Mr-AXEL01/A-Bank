@@ -30,5 +30,20 @@ CREATE TABLE IF NOT EXISTS banks (
 );
 ";
 
+$agencyTable = "
+CREATE TABLE IF NOT EXISTS agencies (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    bank_id INT,
+    name VARCHAR(255) NOT NULL,
+    longitude DECIMAL(10, 8) NOT NULL,
+    latitude DECIMAL(10, 8) NOT NULL,
+    address_id INT,
+    CONSTRAIT fk_agency_bank FOREIGN KEY (bank_id) REFERENCES (bank_id),
+    CONSTRAINT fk_agency_address FOREIGN KEY (address_id) REFERENCES (addresses_id)
+);
+";
+
+
+
 
 ?>

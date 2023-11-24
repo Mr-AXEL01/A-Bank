@@ -19,5 +19,16 @@ CREATE TABLE IF NOT EXISTS role (
     name VARCHAR(200) NOT NULL,
     CONSTRAINT unique_role_name UNIQUE (name)
 );
-"
+";
+
+$bankTable = "
+CREATE TABLE IF NOT EXISTS banks (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(200) NOT NULL,
+    logo VARCHAR(200),
+    CONSTRAINT unique_bank_name UNIQUE (name)
+);
+";
+
+
 ?>

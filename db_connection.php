@@ -3,6 +3,7 @@ $servername = "localhost";
 $username = "root";
 $password= "";
 $databaseName = "A_Bank";
+// $databaseName = "A_Bank";
 $conn = new mysqli ($servername, $username, $password, $databaseName);
 
 if ($conn->connect_error){
@@ -11,7 +12,7 @@ if ($conn->connect_error){
     echo "Connected to the Database seccessfuly\n";
 }
 // let's create a new database
-
+// $databaseName = "A_Bank";
 // $sqlCreateDB = "CREATE DATABASE IF NOT EXISTS $databaseName";
 // if ($conn->query($sqlCreateDB) === TRUE){
 //     echo "Database created successfully\n";

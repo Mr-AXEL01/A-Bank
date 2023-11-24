@@ -68,4 +68,17 @@ CREATE TABLE IF NOT EXISTS address (
 );
 ";
 
+try{
+    $conn->exec($userTable);
+    $conn->exec($roleTable);
+    $conn->exec($bankTable);
+    $conn->exec($agencyTable);
+    $conn->exec($distributorTable);
+    $conn->exec($addressTable);
+
+    echo "Tables created successfully.";
+}catch (PDOException $e){
+    echo "failed to create tables" . $e->getMessage();
+}
+
 ?>

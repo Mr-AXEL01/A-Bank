@@ -56,6 +56,16 @@ CREATE TABLE IF NOT EXISTS distributors (
 );
 ";
 
-
+$addressTable = "
+CREATE TABLE IF NOT EXISTS address (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    city VARCHAR(200) NOT NULL,
+    district VARCHAR(200) NOT NULL,
+    street VARCHAR(200) NOT NULL,
+    postalCode VARCHAR(10) NOT NULL,
+    email VARCHAR(200),
+    phone VARCHAR20
+);
+";
 
 ?>

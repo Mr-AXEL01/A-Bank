@@ -40,6 +40,18 @@ CREATE TABLE IF NOT EXITS banks (
 );
 ";
 
+$addressTable = "
+CREATE TABLE IF NOT EXISTS addresses (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    city VARCHAR(200) NOT NULL,
+    district VARCHAR(200) NOT NULL,
+    street VARCHAR(200) NOT NULL,
+    postaleCode VARCHAR(10) NOT NULL,
+    email VARCHAR(200),
+    phone VARCHAR(20)
+);
+";
+
 
 
 ?>

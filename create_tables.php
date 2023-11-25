@@ -77,6 +77,12 @@ CREATE TABLE IF NOT EXITS sistributors (
 );
 ";
 
-
+$accountTable = "
+CREATE TABLE IFNOT EXISTS accounts (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT,
+    CONSTRAINT fk_account_user FOREIGN KEY (user_id) REFERENCES users(id)
+);
+";
 
 ?>

@@ -31,4 +31,15 @@ CREATE TABLE IF NOT EXISTS user_roles (
 );
 ";
 
+$bankTable = "
+CREATE TABLE IF NOT EXITS banks (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(200) NOT NULL,
+    logo VARCHAR(200),
+    CONSTRAINT unique_bank_name UNIQUE (name)
+);
+";
+
+
+
 ?>

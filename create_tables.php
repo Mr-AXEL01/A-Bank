@@ -13,6 +13,14 @@ CREATE TABLE IF NOT EXISTS users  (
 );
 ";
 
+$roleTable = "
+CREATE TABLE IF NOT EXISTS roles (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(200) NOT NULL,
+    CONSTRAINT unique_role_name UNIQUE (name)
+);
+";
+
 
 
 ?>

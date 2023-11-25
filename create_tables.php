@@ -85,4 +85,15 @@ CREATE TABLE IFNOT EXISTS accounts (
 );
 ";
 
+$transactionTable = "
+CREATE TABLE IF NOT EXISTS transactions (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    account_id INT,
+    amount DECIMAL(10, 2) NOT NULL,
+    CONSTRAINT fk_transaction_account FOREIGN KEY (account_id) REFERENCES accounts(id)
+);
+";
+
+
+
 ?>

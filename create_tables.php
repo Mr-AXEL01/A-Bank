@@ -52,6 +52,31 @@ CREATE TABLE IF NOT EXISTS addresses (
 );
 ";
 
+$agencyTable = "
+CREATE TABLE IF NOT EXISTS agencies (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    bank_id INT,
+    name VARCHAR(200) NOT NULL,
+    longitude DECIMAL(10, 8) NOT NULL,
+    latitude DECIMAL(10, 8) NOT NULL,
+    adress_id INT,
+    CONSTRAINT fk_agency_bank
+);
+";
+
+$distibutorTable = "
+CREATE TABLE IF NOT EXITS sistributors (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    bank_id INT,
+    name VARCHAR(200) NOT NULL,
+    longitude DECIMAL(10, 8) NOT NULL,
+    latitude DECIMAL(10, 8) NOT NULL,
+    address_id INT,
+    CONSTRAINT fk_distributor_bank FOREIGN KEY (bank_id) REFERENCES banks(id),
+    CONSTRAINT fk_distributor_address FOREIGN KEY (address_id) REFERENCES addresses(id)
+);
+";
+
 
 
 ?>

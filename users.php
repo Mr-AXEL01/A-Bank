@@ -35,7 +35,14 @@
         </form>
 
         <table class="mt-8 w-full">
-
+            <thead>
+                <tr>
+                    <th class="py-2 px-4 bg-gray-200">ID</th>
+                    <th class="py-2 px-4 bg-gray-200">Username</th>
+                    <th class="py-2 px-4 bg-gray-200">Password</th>
+                    <th class="py-2 px-4 bg-gray-200">Address ID</th>
+                </tr>
+            </thead>
         </table>
     </div>
 </body>

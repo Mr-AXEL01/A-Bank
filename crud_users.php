@@ -17,3 +17,10 @@ function getAllUsers(){
     return $result->fetch_all(MYSQLI_ASSOC);
 }
 
+function updateUser($userID , $newUsername , $newPassword , $newAddressId) {
+    global $conn;
+    $query = "UPDATE users SET username=? , PASSWORD=? , address_id=? WHERE id=?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("ssii", $newUsername, $newPassword, $newAddressId, $userId);
+    return $stmt->execute();
+}

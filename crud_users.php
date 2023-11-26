@@ -9,3 +9,11 @@ function createUser($username,$password,$addressId){
     $stmt->bind_param("ssi", $username, $password, $addressId);
     return $stmt->execute();
 }
+
+function getAllUsers(){
+    global $conn;
+    $query = "SELECT * FROM users"
+    $result = $conn->query($query);
+    return $result->fetch_all(MYSQLI_ASSOC);
+}
+

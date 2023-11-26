@@ -85,6 +85,7 @@ CREATE TABLE IF NOT EXISTS accounts (
     rib VARCHAR(16) UNIQUE NOT NULL,
     balance DECIMAL(10, 2),
     currency VARCHAR(3),
+    action VARCHAR(10),
     CONSTRAINT fk_account_user FOREIGN KEY (user_id) REFERENCES users(id)
 );
 ";
@@ -96,6 +97,7 @@ CREATE TABLE IF NOT EXISTS transactions (
     type ENUM ('credit', 'debit') NOT NULL,
     target_account_id INT,
     amount DECIMAL(10, 2),
+    action VARCHAR(10),
     CONSTRAINT fk_transaction_account FOREIGN KEY (account_id) REFERENCES accounts(id),
     CONSTRAINT fk_transaction_target_account FOREIGN KEY (target_account_id) REFERENCES accounts(id)
 );

@@ -24,3 +24,14 @@ function updateUser($userID , $newUsername , $newPassword , $newAddressId) {
     $stmt->bind_param("ssii", $newUsername, $newPassword, $newAddressId, $userId);
     return $stmt->execute();
 }
+
+function deleteUser($userId){
+    global $conn;
+    $query = "DELETE FROM users WHERE id=?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_parm("i", $userId);
+    return $stmt->execute();
+}
+
+
+?>

@@ -6,7 +6,11 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Document</title>
 </head>
-<body>
+<body class="bg-gray-100 p-8">
+    <?php
+    include_once 'crud_users.php';
+
     
+    ?>
 </body>
 </html>

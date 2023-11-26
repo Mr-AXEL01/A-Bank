@@ -41,8 +41,23 @@
                     <th class="py-2 px-4 bg-gray-200">Username</th>
                     <th class="py-2 px-4 bg-gray-200">Password</th>
                     <th class="py-2 px-4 bg-gray-200">Address ID</th>
+                    <th class="py-2 px-4 bg-gray-200">Action</th>
                 </tr>
             </thead>
+            <tbody>
+                <?php foreach ($users as $user): ?>
+                    <tr>
+                        <td class="py-2 px-4"><?$user['id']?></td>
+                        <td class="py-2 px-4"><?$user['username']?></td>
+                        <td class="py-2 px-4"><?$user['PASSWORD']?></td>
+                        <td class="py-2 px-4"><?$user['address_id']?></td>
+                        <td class="py-2 px-4">
+                            <button class="bg-blue-500 text-white p-2 rounded-md">Update</button>
+                            <button class="bg-red-500 text-white p-2 rounded-md">Delete</button>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
         </table>
     </div>
 </body>

@@ -10,7 +10,14 @@
     <?php
     include_once 'crud_users.php';
 
-    
+    if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $addressId = $_POST['address_id'];
+        createUser($username, $password, $addressId);
+    }
+
+    $users = getAllUsers();
     ?>
 </body>
 </html>

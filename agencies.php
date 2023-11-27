@@ -18,7 +18,6 @@
         <ul>
             <?php foreach ($agencies as $agency): ?>
                 <li class="mb-2"><?= $agency['name'] ?>
-                    <!-- Add links to update and delete the agency -->
                     <a href="update_agency.php?agency_id=<?= $agency['id'] ?>&agency_name=<?= $agency['name'] ?>&agency_longitude=<?= $agency['longitude'] ?>&agency_latitude=<?= $agency['latitude'] ?>&agency_address_id=<?= $agency['address_id'] ?>" class="text-blue-500 ml-2">Update</a>
                     <a href="delete_agency.php?agency_id=<?= $agency['id'] ?>" class="text-red-500 ml-2">Delete</a>
                 </li>

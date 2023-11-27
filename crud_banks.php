@@ -10,4 +10,11 @@ function createBank($name, $logo){
     return $stmt->execute();
 }
 
+function getAllBanks() {
+    global $conn;
+    $query = "SELECT * FROM banks";
+    $result = $conn->query($query);
+    return $result->fetch_all(MYSQLI_ASSOC);
+}
+
 ?>

@@ -16,6 +16,9 @@
         $new_logo = $_POST['new_logo'];
 
         updateBank($bank_id, $new_name, $new_logo);
+
+        header("Location: banks.php");
+        exit();
     }
     ?>
     <div class="max-w-md mx-auto bg-white p-6 rounded-md shadow-md">

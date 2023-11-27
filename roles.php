@@ -33,7 +33,25 @@
                     <th class="py-2 px-4 bg-gray-200">Action</th>
                 </tr>
             </thead>
-            
+            <tbody>
+                <?php foreach ($roles as $role): ?>
+                    <tr>
+                        <td class="py-2 px-4"><?= $role['id'] ?></td>
+                        <td class="py-2 px-4"><?= $role['name'] ?></td>
+                        <td class="py-2 px-4">
+                            <form action="update_role.php" method="post">
+                                <input type="hidden" name="role_id" value="<?= $role['id'] ?>">
+                                <input type="hidden" name="new_name" value="new_name_value">
+                                <button type="submit" class="bg-blue-500 text-white p-2 rounded-md">Update</button>
+                            </form>
+                            <form action="delete_role.php" method="post">
+                                <input type="hidden" name="role_id" value="<?= $role['id'] ?>">
+                                <button type="submit" class="bg-red-500 text-white p-2 rounded-md">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
         </table>
     </div>
 </body>

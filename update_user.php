@@ -15,4 +15,10 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     header('Location: users.php');
     exit();
 }
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $newUsername = $_POST['new_username'];
+    $newPassword = $_POST['new_password'];
+    $newAddressId = $_POST['new_address_id'];
+}
 ?>

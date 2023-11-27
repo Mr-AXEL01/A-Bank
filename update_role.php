@@ -21,6 +21,8 @@
     }
     ?>
 
-    
+    <div class="max-w-md mx-auto bg-white p-6 rounded-md shadow-md">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Update Role</h2>
+    </div>
 </body>
 </html>

@@ -17,4 +17,14 @@ function getAllBanks() {
     return $result->fetch_all(MYSQLI_ASSOC);
 }
 
+function updateBank($bankId, $newName, $newLogo) {
+    global $conn;
+    $query = "UPDATE banks SET name=?, logo=? WHERE id=?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("ssi", $newName, $newLogo, $bankId);
+    return $stmt->execute();
+}
+
+
+
 ?>

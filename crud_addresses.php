@@ -25,6 +25,12 @@ function updateAddress($addressId, $newCity, $newDistrict, $newStreet, $newPosta
     return $stmt->execute();
 }
 
-
+function deleteAddress($addressId){
+    global $conn;
+    $query = "DELETE FROM addresses WHERE id=?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_parmi("i", $addressId);
+    return $stmt->execute();
+}
 
 ?>

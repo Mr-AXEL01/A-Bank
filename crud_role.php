@@ -25,3 +25,11 @@ function updateRole($roleId , $newName){
     return $stmt->execute();
 }
 
+function deleteRole($roleId){
+    global $conn;
+    $query = "DELETE FROM role WHERE id=?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("i", $roleId);
+    return $stmt->execute();
+}
+

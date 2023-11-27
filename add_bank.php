@@ -22,14 +22,16 @@
     ?>
 
     <div class="max-w-md mx-auto bg-white p-6 rounded-md shadow-md">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Add New Bank</h2>
+
         <form method="post" action="">
             <label for="name" class="block text-sm font-medium text-gray-700">Bank Name</label>
             <input type="text" name="name" id="name" class="mt-1 p-2 border rounded-md w-full">
 
-            <label for="logo" class="block text-sm font-medium text-gray-700 mt-4">Bank Logo</label>
+            <label for="logo" class="block text-sm font-medium text-gray-700 mt-4">Logo URL</label>
             <input type="text" name="logo" id="logo" class="mt-1 p-2 border rounded-md w-full">
 
-            <button type="submit" class="mt-4 bg-blue-500 text-white p-2 rounded-md">Create Bank</button>
+            <button type="submit" class="mt-4 bg-blue-500 text-white p-2 rounded-md">Add Bank</button>
         </form>
     </div>
 </body>

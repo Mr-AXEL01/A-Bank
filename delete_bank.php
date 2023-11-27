@@ -18,7 +18,11 @@
     ?>
     <div class="max-w-md mx-auto bg-white p-6 rounded-md shadow-md">
         <p class="text-lg font-semibold text-gray-800 mb-4">Are you sure you want to delete this bank?</p>
-        
+        <form method="post" action="">
+            <input type="hidden" name="bank_id" value="<?= $_POST['bank_id'] ?>">
+
+            <button type="submit" class="bg-red-500 text-white p-2 rounded-md">Yes, Delete Bank</button>
+        </form>
     </div>
 </body>
 </html>

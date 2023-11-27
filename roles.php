@@ -4,15 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Document</title>
+    <title>Roles</title>
 </head>
 <body class="bg-gray-100 p-8">
     <?php
     include_once 'crud_roles.php';
     
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $name = $_POST['name'];
-        createRole($name);
+        if (isset($_POST['create'])) {
+            $name = $_POST['name'];
+            createRole($name);
+        } elseif (isset($_POST['update'])) {
+            $role_id = $_POST['role_id'];
+            $new_name = $_POST['new_name'];
+            updateRole($role_id, $new_name);
+        } elseif (isset($_POST['delete'])) {
+            $role_id = $_POST['role_id'];
+            deleteRole($role_id);
+        }
     }
     
     $roles = getAllRoles();
@@ -40,14 +49,14 @@
                         <td class="py-2 px-4"><?= $role['id'] ?></td>
                         <td class="py-2 px-4"><?= $role['name'] ?></td>
                         <td class="py-2 px-4">
-                            <form action="update_role.php" method="post">
+                            <form action="update_role.php" method="post" class="inline">
                                 <input type="hidden" name="role_id" value="<?= $role['id'] ?>">
-                                <input type="hidden" name="new_name" value="new_name_value">
-                                <button type="submit" class="bg-blue-500 text-white p-2 rounded-md">Update</button>
+                                <input type="text" name="new_name" placeholder="New Name" class="mr-2 p-2 border rounded-md">
+                                <button type="submit" name="update" class="bg-blue-500 text-white p-2 rounded-md">Update</button>
                             </form>
-                            <form action="delete_role.php" method="post">
+                            <form action="delete_role.php" method="post" class="inline">
                                 <input type="hidden" name="role_id" value="<?= $role['id'] ?>">
-                                <button type="submit" class="bg-red-500 text-white p-2 rounded-md">Delete</button>
+                                <button type="submit" name="delete" class="bg-red-500 text-white p-2 rounded-md">Delete</button>
                             </form>
                         </td>
                     </tr>

@@ -15,6 +15,9 @@
         $logo = $_POST['logo'];
 
         createBank($name, $logo);
+
+        header("Location: banks.php");
+        exit();
     }
     ?>
 

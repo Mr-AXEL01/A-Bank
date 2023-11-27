@@ -52,8 +52,17 @@
                         <td class="py-2 px-4"><?$user['PASSWORD']?></td>
                         <td class="py-2 px-4"><?$user['address_id']?></td>
                         <td class="py-2 px-4">
-                            <button class="bg-blue-500 text-white p-2 rounded-md">Update</button>
-                            <button class="bg-red-500 text-white p-2 rounded-md">Delete</button>
+                            <form action="update_user.php" method="post">
+                                <input type="hidden" name="user_id" value="<?= $user['id'] ?>">
+                                <input type="hidden" name="new_username" value="new_username_value">
+                                <input type="hidden" name="new_password" value="new_password_value">
+                                <input type="hidden" name="new_address_id" value="new_address_id_value">
+                                <button type="submit" class="bg-blue-500 text-white p-2 rounded-md">Update</button>
+                            </form>
+                            <form action="delete_user.php" method="post">
+                                <input type="hidden" name="user_id" value="<?= $user['id'] ?>">
+                                <button type="submit" class="bg-red-500 text-white p-2 rounded-md">Delete</button>
+                            </form>
                         </td>
                     </tr>
                 <?php endforeach; ?>

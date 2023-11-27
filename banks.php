@@ -18,7 +18,6 @@
         <ul>
             <?php foreach ($banks as $bank): ?>
                 <li class="mb-2"><?= $bank['name'] ?>
-                    <!-- Add links to update and delete the bank -->
                     <a href="update_bank.php?bank_id=<?= $bank['id'] ?>&bank_name=<?= $bank['name'] ?>&bank_logo=<?= $bank['logo'] ?>" class="text-blue-500 ml-2">Update</a>
                     <a href="delete_bank.php?bank_id=<?= $bank['id'] ?>" class="text-red-500 ml-2">Delete</a>
                 </li>

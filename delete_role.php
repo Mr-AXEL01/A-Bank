@@ -21,7 +21,12 @@
     ?>
 
     <div classs="max-w-md mx-auto bg-white p-6 rounded-md shadow-md">
-    <p class="text-lg font-semibold text-gray-800 mb-4">Are you sure you want to delete this role?</p>
+        <p class="text-lg font-semibold text-gray-800 mb-4">Are you sure you want to delete this role?</p>
+        <form method="post" action="">
+            <input type="hidden" name="role_id" value="<?= $_POST['role_id'] ?>">
+
+            <button type="submit" class="bg-red-500 text-white p-2 rounded-md">Yes, Delete Role</button>
+        </form>
     </div>
 </body>
 </html>

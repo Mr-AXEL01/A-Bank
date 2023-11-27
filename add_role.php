@@ -26,7 +26,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Document</title>
 </head>
-<body>
-    
+<body class="bg_gray-100">
+    <div class="container mx-auto my-8">
+        <h1 class="text-2xl font-semibold mb-4">Add New Role</h1>
+        <?php
+        if (isset($error)) {
+            echo '<div class="text-red-500 mb-4">' . $error . '</div>';
+        }
+        ?>
+    </div>
 </body>
 </html>

@@ -7,10 +7,15 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $password = $_POST['password'];
     $addressId = $_POST['address_id'];
 
-    if(createUser($username, $password, $addressId)){
-        echo "User created successfully";
-    }else{
-        echo "Failed to add user";
+    if (!empty($username) && !empty($password) && !empty($addressId)) {
+        if (createUser($username, $password, $addressId)) {
+            header('Location: users.php');
+            exit();
+        } else {
+            $error = 'Failed to add the user.';
+        }
+    } else {
+        $error = 'All fields are required.';
     }
 }
 ?>

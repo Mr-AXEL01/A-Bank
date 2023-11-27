@@ -9,3 +9,11 @@ function createRole($name) {
     $stmt->bind_param("s", $name);
     return $stmt->execute();
 }
+
+function getAllRoles(){
+    global $conn;
+    $query = "SELECT * FROM role";
+    $result = $conn->query($query);
+    return $result->fetch_all(MYSQLI_ASSOC);
+}
+

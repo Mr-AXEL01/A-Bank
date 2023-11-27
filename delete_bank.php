@@ -7,13 +7,16 @@
     <title>Delete Bank</title>
 </head>
 <body class="bg-gray-100 p-8">
-<?php
+    <?php
     include_once 'crud_banks.php';
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $bank_id = $_POST['bank_id'];
 
         deleteBank($bank_id);
+
+        header("Location: banks.php");
+        exit();
     }
     ?>
     <div class="max-w-md mx-auto bg-white p-6 rounded-md shadow-md">

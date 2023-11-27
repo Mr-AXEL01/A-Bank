@@ -10,5 +10,13 @@ function createAddress($city, $district, $street, $postalCode, $email, $phone) {
     return $stmt->execute();
 }
 
+function getAllAddresses() {
+    global $conn;
+    $query = "SELECT * FROM addresses";
+    $result = $conn->query($query);
+    return $result->fetch_all(MYSQLI_ASSOC);
+}
+
+
 
 ?>

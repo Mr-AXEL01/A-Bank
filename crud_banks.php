@@ -2,7 +2,8 @@
 
 include_once 'db_connection.php';
 
-function createBank($name, $logo){
+function createBank($name, $logo = null)
+{
     global $conn;
     $query = "INSERT INTO banks (name, logo) VALUES (?, ?)";
     $stmt = $conn->prepare($query);

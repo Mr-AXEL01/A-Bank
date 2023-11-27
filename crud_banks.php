@@ -25,6 +25,12 @@ function updateBank($bankId, $newName, $newLogo) {
     return $stmt->execute();
 }
 
-
+function deleteBank($bankId) {
+    global $conn;
+    $query = "DELETE FROM banks WHERE id=?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("i", $bankId);
+    return $stmt->execute();
+}
 
 ?>

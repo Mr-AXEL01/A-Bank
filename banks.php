@@ -29,7 +29,18 @@
 
             <button type="submit" class="mt-4 bg-blue-500 text-white p-2 rounded-md">Create Bank</button>
         </form>
-        
+
+        <table class="mt-8 w-full">
+            <thead>
+                <tr>
+                    <th class="py-2 px-4 bg-gray-200">ID</th>
+                    <th class="py-2 px-4 bg-gray-200">Name</th>
+                    <th class="py-2 px-4 bg-gray-200">Logo</th>
+                    <th class="py-2 px-4 bg-gray-200">Action</th>
+                </tr>
+            </thead>
+            
+        </table>
     </div>
 </body>
 </html>

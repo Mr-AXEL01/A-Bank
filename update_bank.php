@@ -22,14 +22,15 @@
     }
     ?>
     <div class="max-w-md mx-auto bg-white p-6 rounded-md shadow-md">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Update Bank</h2>
         <form method="post" action="">
             <input type="hidden" name="bank_id" value="<?= $_POST['bank_id'] ?>">
 
             <label for="new_name" class="block text-sm font-medium text-gray-700">New Bank Name</label>
-            <input type="text" name="new_name" id="new_name" class="mt-1 p-2 border rounded-md w-full">
+            <input type="text" name="new_name" id="new_name" class="mt-1 p-2 border rounded-md w-full" value="<?= $_POST['bank_name'] ?>">
 
-            <label for="new_logo" class="block text-sm font-medium text-gray-700 mt-4">New Bank Logo</label>
-            <input type="text" name="new_logo" id="new_logo" class="mt-1 p-2 border rounded-md w-full">
+            <label for="new_logo" class="block text-sm font-medium text-gray-700 mt-4">New Logo URL</label>
+            <input type="text" name="new_logo" id="new_logo" class="mt-1 p-2 border rounded-md w-full" value="<?= $_POST['bank_logo'] ?>">
 
             <button type="submit" class="mt-4 bg-blue-500 text-white p-2 rounded-md">Update Bank</button>
         </form>

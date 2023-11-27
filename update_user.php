@@ -1,15 +1,10 @@
 <?php
+include_once 'db_connection.php';
 include_once "crud_user.php";
 
-if($_SERVER['REQUEST_METHOD'] === 'POST'){
-    $userId =$_POST['user_id'];
-    $newUsername = $_POST['new_username'];
-    $newPassword = $_POST['new_password'];
-    $newAddressId = $_POST['new_address_id'];
+if (isset($_GET['id']) && is_numeric($_GET['id'])){
+    $userId = $GET['id'];
 
-    updateUser($userId, $newUsername, $newPassword, $newAddressId);
-
-    header('Location: user.php');
-    exit;
+    $user = getUserById($userId);
 }
 ?>

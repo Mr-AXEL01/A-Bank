@@ -17,6 +17,14 @@ function getAllAddresses() {
     return $result->fetch_all(MYSQLI_ASSOC);
 }
 
+function updateAddress($addressId, $newCity, $newDistrict, $newStreet, $newPostalCode, $newEmail, $newPhone){
+    global $conn;
+    $query = "UPDATE addresses SET city=?, district=?, street=?, postalCode=?, email=?, phone=? WHERE id=?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("ssssssi", $newCity, $newDistrict, $newStreet, $newPostalCode, $newEmail, $newPhone, $addressId);
+    return $stmt->execute();
+}
+
 
 
 ?>

@@ -30,24 +30,27 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 <body  class="bg-gray-100 font-sans">
     <div class="container mx-auto my-8 p-8 bg-white shadow-md rounded-md">
         <h1 class="text-3xl font-bold mb-4">Add User</h1>
-
-        <form action="add_user.php" method="post">
+    
+        <?php if (isset($error)): ?>
+            <div class="text-red-500 mb-4"><?= $error ?></div>
+        <?php endif; ?>
+    
+        <form action="" method="post">
             <div class="mb-4">
                 <label for="username" class="block text-gray-700">Username:</label>
-                <input type="text" id="username" name="username" class="w-full px-3 py-2 border border-gray-300 rounded-md">
+                <input type="text" name="username" id="username" class="border border-gray-300 p-2 w-full" required>
             </div>
-
             <div class="mb-4">
                 <label for="password" class="block text-gray-700">Password:</label>
-                <input type="password" id="password" name="password" class="w-full px-3 py-2 border border-gray-300 rounded-md">
+                <input type="password" name="password" id="password" class="border border-gray-300 p-2 w-full" required>
             </div>
-
             <div class="mb-4">
                 <label for="address_id" class="block text-gray-700">Address ID:</label>
-                <input type="text" id="address_id" name="address_id" class="w-full px-3 py-2 border border-gray-300 rounded-md">
+                <input type="number" name="address_id" id="address_id" class="border border-gray-300 p-2 w-full" required>
             </div>
-
-            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md">Add User</button>
+            <div class="mb-4">
+                <button type="submit" class="bg-blue-500 text-white py-2 px-4">Add User</button>
+            </div>
         </form>
     </div>
 </body>

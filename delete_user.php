@@ -1,12 +1,16 @@
 <?php
+include_once 'db_connection.php';
 include_once 'crud_users.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $userId = $_POST['user_id'];
+if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+    $userId = $_GET['id'];
 
     deleteUser($userId);
 
+    header('Location: users.php'); 
+    exit();
+} else {
     header('Location: users.php');
-    exit;
+    exit();
 }
 ?>

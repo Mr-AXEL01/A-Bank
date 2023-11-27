@@ -2,8 +2,7 @@
 
 include_once 'db_connection.php';
 
-function createBank($name, $logo = null)
-{
+function createBank($name, $logo = null){
     global $conn;
     $query = "INSERT INTO banks (name, logo) VALUES (?, ?)";
     $stmt = $conn->prepare($query);
@@ -18,11 +17,11 @@ function getAllBanks() {
     return $result->fetch_all(MYSQLI_ASSOC);
 }
 
-function updateBank($bankId, $newName, $newLogo) {
+function updateBank($bankID, $newName, $newLogo = null){
     global $conn;
     $query = "UPDATE banks SET name=?, logo=? WHERE id=?";
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("ssi", $newName, $newLogo, $bankId);
+    $stmt->bind_param("ssi", $newName, $newLogo, $bankID);
     return $stmt->execute();
 }
 

@@ -33,3 +33,4 @@ function deleteRole($roleId){
     return $stmt->execute();
 }
 
+?>

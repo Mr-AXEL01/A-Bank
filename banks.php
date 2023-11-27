@@ -19,6 +19,17 @@
     $banks = getAllBanks();
     ?>
 
-    
+    <div class="max-w-md mx-auto bg-white p-6 rounded-md shadow-md">
+        <form method="post" action="">
+            <label for="name" class="block text-sm font-medium text-gray-700">Bank Name</label>
+            <input type="text" name="name" id="name" class="mt-1 p-2 border rounded-md w-full">
+
+            <label for="logo" class="block mt-4 text-sm font-medium text-gray-700">Logo URL</label>
+            <input type="text" name="logo" id="logo" class="mt-1 p-2 border rounded-md w-full">
+
+            <button type="submit" class="mt-4 bg-blue-500 text-white p-2 rounded-md">Create Bank</button>
+        </form>
+        
+    </div>
 </body>
 </html>

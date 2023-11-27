@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Document</title>
+    <title>Banks</title>
 </head>
 <body class="bg-gray-100 p-8">
     <?php
@@ -19,7 +19,7 @@
             <?php foreach ($banks as $bank): ?>
                 <li class="mb-2"><?= $bank['name'] ?>
                     <!-- Add links to update and delete the bank -->
-                    <a href="update_bank.php?bank_id=<?= $bank['id'] ?>" class="text-blue-500 ml-2">Update</a>
+                    <a href="update_bank.php?bank_id=<?= $bank['id'] ?>&bank_name=<?= $bank['name'] ?>&bank_logo=<?= $bank['logo'] ?>" class="text-blue-500 ml-2">Update</a>
                     <a href="delete_bank.php?bank_id=<?= $bank['id'] ?>" class="text-red-500 ml-2">Delete</a>
                 </li>
             <?php endforeach; ?>

@@ -34,6 +34,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo '<div class="text-red-500 mb-4">' . $error . '</div>';
         }
         ?>
+
+        <form action="add_role.php" method="post" class="max-w-md">
+            <div class="mb-4">
+                <label for="role_name" class="block text-gray-600">Role Name:</label>
+                <input type="text" name="role_name" id="role_name" class="w-full border rounded py-2 px-3" required>
+            </div>
+
+            <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded">Add Role</button>
+        </form>
     </div>
 </body>
 </html>

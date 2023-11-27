@@ -21,7 +21,7 @@
     ?>
 
     <div classs="max-w-md mx-auto bg-white p-6 rounded-md shadow-md">
-        
+    <p class="text-lg font-semibold text-gray-800 mb-4">Are you sure you want to delete this role?</p>
     </div>
 </body>
 </html>

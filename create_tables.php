@@ -2,17 +2,6 @@
 
 include_once "db_connection.php";
 
-$userTable = "
-CREATE TABLE IF NOT EXISTS users  (
-    id INT PRIMARY KEY AUTO_INCREAMENT,
-    username VARCHAR(200) NOT NULL,
-    PASSWORD VARCHAR(255) NOT NULL,
-    address_id INT,
-    CONSTRAINT unique_username UNIQUE (username),
-    CONSTRAINT fk_user_address FOREIGN KEY (address_id) REFERENCES addresses(id)
-);
-";
-
 $roleTable = "
 CREATE TABLE IF NOT EXISTS roles (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -21,22 +10,14 @@ CREATE TABLE IF NOT EXISTS roles (
 );
 ";
 
-$userRoleTable = "
-CREATE TABLE IF NOT EXISTS user_roles (
-    user_id INT,
-    role_id INT,
-    PRIMARY KEY (user_id, role_id),
-    CONSTRAINT fk_user_roles_user FOREIGN KEY (user_id) REFERENCES users(id),
-    CONSTRAINT fk_user_roles_role FOREIGN KEY (role_id) REFERENCES roles(id)
-);
-";
-
-$bankTable = "
-CREATE TABLE IF NOT EXITS banks (
+$userTable = "
+CREATE TABLE IF NOT EXISTS users (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(200) NOT NULL,
-    logo VARCHAR(200),
-    CONSTRAINT unique_bank_name UNIQUE (name)
+    username VARCHAR(200) NOT NULL,
+    PASSWORD VARCHAR(255) NOT NULL,
+    address_id INT,
+    CONSTRAINT unique_username UNIQUE (username),
+    CONSTRAINT fk_user_address FOREIGN KEY (address_id) REFERENCES addresses(id)
 );
 ";
 
@@ -65,8 +46,8 @@ CREATE TABLE IF NOT EXISTS agencies (
 );
 ";
 
-$distibutorTable = "
-CREATE TABLE IF NOT EXITS sistributors (
+$distributorTable = "
+CREATE TABLE IF NOT EXISTS distributors (
     id INT PRIMARY KEY AUTO_INCREMENT,
     bank_id INT,
     name VARCHAR(200) NOT NULL,
@@ -75,6 +56,15 @@ CREATE TABLE IF NOT EXITS sistributors (
     address_id INT,
     CONSTRAINT fk_distributor_bank FOREIGN KEY (bank_id) REFERENCES banks(id),
     CONSTRAINT fk_distributor_address FOREIGN KEY (address_id) REFERENCES addresses(id)
+);
+";
+
+$bankTable = "
+CREATE TABLE IF NOT EXISTS banks (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(200) NOT NULL,
+    logo VARCHAR(200),
+    CONSTRAINT unique_bank_name UNIQUE (name)
 );
 ";
 
@@ -104,13 +94,12 @@ CREATE TABLE IF NOT EXISTS transactions (
 ";
 
 try {
-    $conn->query($userTable);
     $conn->query($roleTable);
-    $conn->query($userRoleTable);
-    $conn->query($bankTable);
+    $conn->query($userTable);
     $conn->query($addressTable);
     $conn->query($agencyTable);
     $conn->query($distributorTable);
+    $conn->query($bankTable);
     $conn->query($accountTable);
     $conn->query($transactionTable);
 

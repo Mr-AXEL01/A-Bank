@@ -12,7 +12,7 @@ function createUser($username,$password,$addressId){
 
 function getAllUsers(){
     global $conn;
-    $query = "SELECT * FROM users"
+    $query = "SELECT * FROM users";
     $result = $conn->query($query);
     return $result->fetch_all(MYSQLI_ASSOC);
 }

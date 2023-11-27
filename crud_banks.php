@@ -25,11 +25,11 @@ function updateBank($bankID, $newName, $newLogo = null){
     return $stmt->execute();
 }
 
-function deleteBank($bankId) {
+function deleteBank($bankID) {
     global $conn;
     $query = "DELETE FROM banks WHERE id=?";
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("i", $bankId);
+    $stmt->bind_param("i", $bankID);
     return $stmt->execute();
 }
 

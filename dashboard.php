@@ -1,5 +1,5 @@
 <?php
-session_starts();
+session_start();
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
@@ -9,7 +9,6 @@ if (!isset($_SESSION['user_id'])) {
 $user_id = $_SESSION['user_id'];
 $username = $_SESSION['username'];
 
-include_once 'header.php';
 ?>
 
 <!DOCTYPE html>
@@ -31,6 +30,15 @@ include_once 'header.php';
         </div>
     </nav>
 
-    
+    <div class="container mx-auto mt-8">
+        <h1 class="text-3xl font-bold mb-4">Dashboard</h1>
+        <p class="text-gray-700">This is your dashboard. You can add more content here.</p>
+    </div>
+
+    <footer class="mt-8 bg-blue-500 p-4 text-white">
+        <div class="container mx-auto text-center">
+            &copy; <?= date('Y') ?> Your Bank. All rights reserved.
+        </div>
+    </footer>
 </body>
 </html>

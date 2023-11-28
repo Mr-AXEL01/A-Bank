@@ -41,5 +41,10 @@
             </div>
         </div>
     </div>
+    <footer class="mt-8 bg-blue-500 p-4 text-white">
+        <div class="container mx-auto text-center">
+            &copy; <?= date('Y') ?> A-Bank. All rights reserved.
+        </div>
+    </footer>
 </body>
 </html>

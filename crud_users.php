@@ -33,5 +33,21 @@ function deleteUser($userId){
     return $stmt->execute();
 }
 
+if (!function_exists('getUserDetails')) {
+    function getUserDetails($userId) {
+        global $conn;
 
+        $query = "SELECT * FROM users WHERE id = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("i", $userId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            return $result->fetch_assoc();
+        } else {
+            return null;
+        }
+    }
+}
 ?>

@@ -10,7 +10,10 @@ $user_id = $_SESSION['user_id'];
 $username = $_SESSION['username'];
 
 include_once 'crud_users.php';
+include_once 'crud_transactions.php';
+
 $userDetails = getUserDetails($user_id);
+$transactions = getRecentTransactions($user_id);
 
 ?>
 
@@ -34,34 +37,30 @@ $userDetails = getUserDetails($user_id);
     </nav>
 
     <div class="bg-white p-4 rounded-md shadow-md mb-4">
-            <h2 class="text-xl font-bold mb-2">User Information</h2>
-            <p>User ID: <?= $user_id ?></p>
-            <p>Username: <?= $username ?></p>
-            <?php
-            if (isset($userDetails)) {
-                ?>
-                <p>Email: <?= $userDetails['email'] ?></p>
-                <p>Phone: <?= $userDetails['phone'] ?></p>
-                <?php
+        <h2 class="text-xl font-bold mb-2">User Information</h2>
+        <p>User ID: <?= $user_id ?></p>
+        <p>Username: <?= $username ?></p>
+        <?php
+        if (isset($userDetails['email'])) {
+            echo "<p>Email: {$userDetails['email']}</p>";
+        }
+        if (isset($userDetails['phone'])) {
+            echo "<p>Phone: {$userDetails['phone']}</p>";
+        }
+        ?>
+    </div>
+
+    <div class="bg-white p-4 rounded-md shadow-md mb-4">
+        <h2 class="text-xl font-bold mb-2">Recent Transactions</h2>
+        <?php
+        if (!empty($transactions)) {
+            foreach ($transactions as $transaction) {
+                echo "<p>{$transaction['type']}: {$transaction['amount']} {$transaction['currency']}</p>";
             }
-            ?>
-        </div>
-        <div class="bg-white p-4 rounded-md shadow-md mb-4">
-            <h2 class="text-xl font-bold mb-2">Recent Transactions</h2>
-            <?php
-            if (isset($transactions)) {
-                foreach ($transactions as $transaction) {
-                    ?>
-                    <p><?= $transaction['type'] ?>: <?= $transaction['amount'] ?> <?= $transaction['currency'] ?></p>
-                    <?php
-                }
-            } else {
-                ?>
-                <p>No recent transactions.</p>
-                <?php
-            }
-            ?>
-        </div>
+        } else {
+            echo "<p>No recent transactions.</p>";
+        }
+        ?>
     </div>
 
     <footer class="mt-8 bg-blue-500 p-4 text-white">

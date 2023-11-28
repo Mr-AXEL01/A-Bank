@@ -2,26 +2,29 @@
 include_once 'db_connection.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
-    $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
-    $query = "SELECT id, username, password FROM users WHERE username = ?";
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $user = $result->fetch_assoc();
-
-    if ($user && password_verify($password, $user['password'])) {
-
-        session_start();
-        $_SESSION['user_id'] = $user['id'];
-        $_SESSION['username'] = $user['username'];
-
-        header("Location: dashboard.php"); 
-        exit();
+    if (empty($username) || empty($password)) {
+        echo "Username and password are required.";
     } else {
-        echo "Invalid username or password";
+        $query = "SELECT id, password FROM users WHERE username = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $stmt->bind_result($userId, $hashedPassword);
+        $stmt->fetch();
+        $stmt->close();
+
+        if (password_verify($password, $hashedPassword)) {
+            session_start();
+            $_SESSION['user_id'] = $userId;
+            echo "Login successful. Redirecting to the dashboard...";
+            header("Location: dashboard.php");
+            exit();
+        } else {
+            echo "Invalid username or password.";
+        }
     }
 }
 ?>

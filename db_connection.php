@@ -3,7 +3,6 @@ $servername = "localhost";
 $username = "root";
 $password= "";
 $databaseName = "A_Bank";
-// $databaseName = "A_Bank";
 $conn = new mysqli ($servername, $username, $password, $databaseName);
 
 if ($conn->connect_error){

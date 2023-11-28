@@ -8,19 +8,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($username) || empty($password)) {
         echo "Username and password are required.";
     } else {
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $checkQuery = "SELECT id FROM users WHERE username = ?";
+        $checkStmt = $conn->prepare($checkQuery);
+        $checkStmt->bind_param("s", $username);
+        $checkStmt->execute();
+        $checkStmt->store_result();
 
-        $query = "INSERT INTO users (username, password) VALUES (?, ?)";
-        $stmt = $conn->prepare($query);
-        $stmt->bind_param("ss", $username, $hashedPassword);
-
-        if ($stmt->execute()) {
-            echo "User registered successfully.";
+        if ($checkStmt->num_rows > 0) {
+            echo "Username already exists. Please choose a different username.";
         } else {
-            echo "Error registering user.";
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+            $query = "INSERT INTO users (username, password) VALUES (?, ?)";
+            $stmt = $conn->prepare($query);
+            $stmt->bind_param("ss", $username, $hashedPassword);
+
+            if ($stmt->execute()) {
+                echo "User registered successfully.";
+                exit();
+            } else {
+                echo "Error registering user.";
+            }
+
+            $stmt->close();
         }
 
-        $stmt->close();
+        $checkStmt->close();
     }
 }
 ?>
@@ -30,8 +43,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>User Registration</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    
 </head>
 <body class="bg-gray-100 flex items-center justify-center h-screen">
     <div class="max-w-md w-full bg-white p-8 rounded-md shadow-md">

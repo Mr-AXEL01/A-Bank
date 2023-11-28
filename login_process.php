@@ -21,7 +21,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header("Location: dashboard.php");
         exit();
     } else {
-        echo "Invalid username or password. Please try again.";
+        $_SESSION['login_error'] = "Invalid username or password. Please try again.";
+        header("Location: login.php");
+        exit();
     }
 
     $stmt->close();

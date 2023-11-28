@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body class="bg-gray-100 flex items-center justify-center h-screen">
     <div class="max-w-md w-full bg-white p-8 rounded-md shadow-md">
         <h2 class="text-2xl font-semibold text-gray-800 mb-4">User Login</h2>
-        <form method="post" action="" class="space-y-4">
+        <form method="post" action="login_process.php" class="space-y-4">
             <div>
                 <label for="username" class="block text-sm font-medium text-gray-700">Username:</label>
                 <input type="text" name="username" required class="mt-1 p-2 border rounded-md w-full">
@@ -51,6 +51,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
             <button type="submit" class="bg-blue-500 text-white p-2 rounded-md w-full">Login</button>
         </form>
+        <p class="mt-4 text-gray-700">Don't have an account? <a href="register.php" class="text-blue-500">Register here</a>.</p>
     </div>
+
 </body>
 </html>

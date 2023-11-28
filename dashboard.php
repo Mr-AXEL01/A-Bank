@@ -14,7 +14,6 @@ include_once 'crud_transactions.php';
 
 $userDetails = getUserDetails($user_id);
 $transactions = getRecentTransactions($user_id);
-
 ?>
 
 <!DOCTYPE html>

@@ -2,7 +2,7 @@
 include_once 'db_connection.php';
 include_once 'crud_users.php';
 
-if($_SERVER['REQUEST_METHOD'] === 'POST'){
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
     $addressId = $_POST['address_id'];
@@ -25,9 +25,9 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Document</title>
+    <title>Add User</title>
 </head>
-<body  class="bg-gray-100 font-sans">
+<body class="bg-gray-100 font-sans">
     <div class="container mx-auto my-8 p-8 bg-white shadow-md rounded-md">
         <h1 class="text-3xl font-bold mb-4">Add User</h1>
     

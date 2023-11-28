@@ -21,15 +21,25 @@
     }
     ?>
 
-    <div class="max-w-md mx-auto bg-white p-6 rounded-md shadow-md">
-        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Update Role</h2>
-        <form method="post" action="">
-            <input type="hidden" name="role_id" value="<?= $_POST['role_id'] ?>">
-
-            <label for="new_name" class="block text-sm font-medium text-gray-700">New Role Name</label>
-            <input type="text" name="new_name" id="new_name" class="mt-1 p-2 border rounded-md w-full" value="<?= $_POST['role_name'] ?>">
-
-            <button type="submit" class="mt-4 bg-blue-500 text-white p-2 rounded-md">Update Role</button>
+    <div class="container mx-auto my-8 p-8 bg-white shadow-md rounded-md">
+        <h1 class="text-3xl font-bold mb-4">Update Role</h1>
+    
+        <?php if (isset($error)): ?>
+            <div class="text-red-500 mb-4"><?= $error ?></div>
+        <?php endif; ?>
+    
+        <form action="" method="post">
+            <input type="hidden" name="role_id" value="<?= $role_id ?>">
+            
+            <div class="mb-4">
+                <label for="new_role_name" class="block text-gray-700">New Role Name:</label>
+                <input type="text" name="new_role_name" id="new_role_name" class="border border-gray-300 p-2 w-full" value="<?= $new_role_name ?>" required>
+            </div>
+            
+            <div class="mb-4">
+                <button type="submit" class="bg-blue-500 text-white py-2 px-4">Update Role</button>
+                <a href="roles.php" class="ml-2 text-gray-500">Cancel</a>
+            </div>
         </form>
     </div>
 </body>

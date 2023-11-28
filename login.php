@@ -1,30 +1,30 @@
 <?php
 session_start();
-include_once 'db_connection.php';
+
+if (isset($_SESSION['user_id'])) {
+    // If the user is already logged in, redirect to the dashboard
+    header("Location: dashboard.php");
+    exit();
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Assuming you have a function like validateUser() to check credentials
+    // Implement your user validation logic here
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    if (empty($username) || empty($password)) {
-        echo "Username and password are required.";
-    } else {
-        $query = "SELECT id, password FROM users WHERE username = ?";
-        $stmt = $conn->prepare($query);
-        $stmt->bind_param("s", $username);
-        $stmt->execute();
-        $stmt->bind_result($userId, $hashedPassword);
-        $stmt->fetch();
-        $stmt->close();
+    // Example validation (replace this with your actual validation logic)
+    if (validateUser($username, $password)) {
+        // Assuming $user_data is an associative array containing user details
+        $_SESSION['user_id'] = $user_data['id'];
+        $_SESSION['username'] = $user_data['username'];
+        // Add other relevant user information to the session if needed
+        // ...
 
-        if (password_verify($password, $hashedPassword)) {
-            $_SESSION['user_id'] = $userId;
-            $_SESSION['username'] = $username;
-            header("Location: dashboard.php");
-            exit();
-        } else {
-            echo "Invalid username or password.";
-        }
+        header("Location: dashboard.php");
+        exit();
+    } else {
+        $error = "Invalid username or password"; // Display an error message
     }
 }
 ?>
@@ -35,24 +35,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>User Login</title>
-    
+    <title>Login</title>
 </head>
-<body class="bg-gray-100 flex items-center justify-center h-screen">
-    <div class="max-w-md w-full bg-white p-8 rounded-md shadow-md">
-        <h2 class="text-2xl font-semibold text-gray-800 mb-4">User Login</h2>
-        <form method="post" action="login.php" class="space-y-4">
-            <div>
-                <label for="username" class="block text-sm font-medium text-gray-700">Username:</label>
-                <input type="text" name="username" required class="mt-1 p-2 border rounded-md w-full">
-            </div>
-            <div>
-                <label for="password" class="block text-sm font-medium text-gray-700">Password:</label>
-                <input type="password" name="password" required class="mt-1 p-2 border rounded-md w-full">
-            </div>
-            <button type="submit" class="bg-blue-500 text-white p-2 rounded-md w-full">Login</button>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-md mx-auto bg-white p-6 rounded-md shadow-md">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Login</h2>
+        
+        <?php if (isset($error)): ?>
+            <div class="text-red-500 mb-4"><?= $error ?></div>
+        <?php endif; ?>
+
+        <form method="post" action="">
+            <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
+            <input type="text" name="username" id="username" class="mt-1 p-2 border rounded-md w-full" required>
+
+            <label for="password" class="block text-sm font-medium text-gray-700 mt-4">Password</label>
+            <input type="password" name="password" id="password" class="mt-1 p-2 border rounded-md w-full" required>
+
+            <button type="submit" class="mt-4 bg-blue-500 text-white p-2 rounded-md">Login</button>
         </form>
-        <p class="mt-4 text-gray-700">Don't have an account? <a href="register.php" class="text-blue-500">Register here</a>.</p>
     </div>
 </body>
 </html>

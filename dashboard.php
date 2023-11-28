@@ -9,6 +9,9 @@ if (!isset($_SESSION['user_id'])) {
 $user_id = $_SESSION['user_id'];
 $username = $_SESSION['username'];
 
+include_once 'crud_users.php';
+$userDetails = getUserDetails($user_id);
+
 ?>
 
 <!DOCTYPE html>
@@ -30,9 +33,35 @@ $username = $_SESSION['username'];
         </div>
     </nav>
 
-    <div class="container mx-auto mt-8">
-        <h1 class="text-3xl font-bold mb-4">Dashboard</h1>
-        <p class="text-gray-700">This is your dashboard. You can add more content here.</p>
+    <div class="bg-white p-4 rounded-md shadow-md mb-4">
+            <h2 class="text-xl font-bold mb-2">User Information</h2>
+            <p>User ID: <?= $user_id ?></p>
+            <p>Username: <?= $username ?></p>
+            <?php
+            if (isset($userDetails)) {
+                ?>
+                <p>Email: <?= $userDetails['email'] ?></p>
+                <p>Phone: <?= $userDetails['phone'] ?></p>
+                <?php
+            }
+            ?>
+        </div>
+        <div class="bg-white p-4 rounded-md shadow-md mb-4">
+            <h2 class="text-xl font-bold mb-2">Recent Transactions</h2>
+            <?php
+            if (isset($transactions)) {
+                foreach ($transactions as $transaction) {
+                    ?>
+                    <p><?= $transaction['type'] ?>: <?= $transaction['amount'] ?> <?= $transaction['currency'] ?></p>
+                    <?php
+                }
+            } else {
+                ?>
+                <p>No recent transactions.</p>
+                <?php
+            }
+            ?>
+        </div>
     </div>
 
     <footer class="mt-8 bg-blue-500 p-4 text-white">

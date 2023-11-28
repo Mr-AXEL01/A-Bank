@@ -17,9 +17,9 @@ function getAllUsers(){
     return $result->fetch_all(MYSQLI_ASSOC);
 }
 
-function updateUser($userID , $newUsername , $newPassword , $newAddressId) {
+function updateUser($userId, $newUsername, $newPassword, $newAddressId) {
     global $conn;
-    $query = "UPDATE users SET username=? , PASSWORD=? , address_id=? WHERE id=?";
+    $query = "UPDATE users SET username=?, PASSWORD=?, address_id=? WHERE id=?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("ssii", $newUsername, $newPassword, $newAddressId, $userId);
     return $stmt->execute();
@@ -29,7 +29,7 @@ function deleteUser($userId){
     global $conn;
     $query = "DELETE FROM users WHERE id=?";
     $stmt = $conn->prepare($query);
-    $stmt->bind_parm("i", $userId);
+    $stmt->bind_param("i", $userId);
     return $stmt->execute();
 }
 

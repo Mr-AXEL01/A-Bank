@@ -29,7 +29,7 @@ function deleteAddress($addressId){
     global $conn;
     $query = "DELETE FROM addresses WHERE id=?";
     $stmt = $conn->prepare($query);
-    $stmt->bind_parmi("i", $addressId);
+    $stmt->bind_param("i", $addressId);
     return $stmt->execute();
 }
 

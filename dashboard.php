@@ -43,9 +43,13 @@ $transactions = getRecentTransactions($user_id);
         <?php
         if (isset($userDetails['email'])) {
             echo "<p>Email: {$userDetails['email']}</p>";
+        } else {
+            echo "<p>Email: Not available</p>";
         }
         if (isset($userDetails['phone'])) {
             echo "<p>Phone: {$userDetails['phone']}</p>";
+        } else {
+            echo "<p>Phone: Not available</p>";
         }
         ?>
     </div>

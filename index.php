@@ -17,7 +17,7 @@
             </div>
         </div>
     </nav>
-    <div class="container mx-auto mt-8">
+    <div class="container mx-auto mt-8 h-[81vh]">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div>
                 <h1 class="text-4xl font-bold mb-4">Welcome to A-Bank</h1>

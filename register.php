@@ -1,22 +1,26 @@
 <?php
 include_once 'db_connection.php';
 
-if($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
-    $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
-    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
-    $query = "INSERT INTO users (username, password) VALUES (?, ?)";
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param("ss", $username, $hashedPassword);
-    
-    if ($stmt->execute()) {
-        
-        header("Location: login.php");
-        exit();
+    if (empty($username) || empty($password)) {
+        echo "Username and password are required.";
     } else {
-        echo "Error: " . $stmt->error;
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+        $query = "INSERT INTO users (username, password) VALUES (?, ?)";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("ss", $username, $hashedPassword);
+
+        if ($stmt->execute()) {
+            echo "User registered successfully.";
+        } else {
+            echo "Error registering user.";
+        }
+
+        $stmt->close();
     }
 }
 ?>

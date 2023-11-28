@@ -15,8 +15,10 @@ CREATE TABLE IF NOT EXISTS users (
     id INT PRIMARY KEY AUTO_INCREMENT,
     username VARCHAR(200) NOT NULL,
     PASSWORD VARCHAR(255) NOT NULL,
+    role_id INT,
     address_id INT,
     CONSTRAINT unique_username UNIQUE (username),
+    CONSTRAINT fk_user_role FOREIGN KEY (role_id) REFERENCES roles(id),
     CONSTRAINT fk_user_address FOREIGN KEY (address_id) REFERENCES addresses(id)
 );
 ";
@@ -93,6 +95,14 @@ CREATE TABLE IF NOT EXISTS transactions (
 );
 ";
 
+$permissionTable = "
+CREATE TABLE IF NOT EXISTS permissions (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(200) NOT NULL,
+    CONSTRAINT unique_permission_name UNIQUE (name)
+);
+";
+
 try {
     $conn->query($roleTable);
     $conn->query($userTable);
@@ -102,12 +112,12 @@ try {
     $conn->query($bankTable);
     $conn->query($accountTable);
     $conn->query($transactionTable);
+    $conn->query($permissionTable);
 
     echo "Tables created successfully.";
 } catch (mysqli_sql_exception $e) {
     echo "Error creating tables: " . $e->getMessage();
 }
 
-$conn = null; # Close the database connection
-
+$conn->close();
 ?>
